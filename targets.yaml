@@ -1,0 +1,62 @@
+# Target companies to monitor daily.
+#
+# Each entry needs:
+#   name: Display name
+#   source: ATS platform (greenhouse | lever | ashby | workable)
+#   slug: Board token / company slug on that ATS
+#   tier: 1 = dream, 2 = strong, 3 = watch
+#
+# How to find the slug: look at a company's careers page URL.
+#   boards.greenhouse.io/monzo        -> source: greenhouse, slug: monzo
+#   jobs.lever.co/traderepublic       -> source: lever, slug: traderepublic
+#   jobs.ashbyhq.com/anthropic        -> source: ashby, slug: anthropic
+#   apply.workable.com/{slug}         -> source: workable, slug: ...
+
+companies:
+  # --- Tier 1 Fintech (established, high quality) ---
+  - name: Monzo
+    source: greenhouse
+    slug: monzo
+    tier: 1
+
+  - name: Mercury
+    source: greenhouse
+    slug: mercury
+    tier: 1
+
+  - name: Plaid
+    source: ashby
+    slug: plaid
+    tier: 1
+
+  - name: Ramp
+    source: greenhouse
+    slug: rampnetwork
+    tier: 1
+
+  # --- Tier 1 AI-native ---
+  - name: Anthropic
+    source: greenhouse
+    slug: anthropic
+    tier: 1
+
+  - name: OpenAI
+    source: ashby
+    slug: openai
+    tier: 1
+
+  - name: Harvey
+    source: ashby
+    slug: harvey
+    tier: 1
+
+  - name: Cursor
+    source: ashby
+    slug: cursor
+    tier: 1
+
+  # --- Tier 2 Crypto/AI infra ---
+  - name: Fireblocks
+    source: greenhouse
+    slug: fireblocks
+    tier: 2
