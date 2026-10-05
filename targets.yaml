@@ -55,8 +55,66 @@ companies:
     slug: cursor
     tier: 1
 
+  # --- Tier 1 Fintech (added) ---
+  - name: Wise
+    source: greenhouse
+    slug: wise
+    tier: 1
+
+  - name: Qonto
+    source: lever
+    slug: qonto
+    tier: 1
+
+  - name: Trade Republic
+    source: greenhouse
+    slug: traderepublic
+    tier: 1
+
+  # --- Tier 1 AI-native (added) ---
+  - name: ElevenLabs
+    source: ashby
+    slug: elevenlabs
+    tier: 1
+
+  - name: Vercel
+    source: greenhouse
+    slug: vercel
+    tier: 1
+
+  - name: Replit
+    source: ashby
+    slug: replit
+    tier: 1
+
+  - name: Perplexity
+    source: ashby
+    slug: perplexity
+    tier: 1
+
   # --- Tier 2 Crypto/AI infra ---
   - name: Fireblocks
     source: greenhouse
     slug: fireblocks
+    tier: 2
+
+  - name: Gensyn
+    source: greenhouse
+    slug: gensyn
+    tier: 2
+
+  - name: Ritual
+    source: greenhouse
+    slug: ritual
+    tier: 2
+
+  # --- Tier 2 Fintech / fast-growing (larger, more established) ---
+  - name: Adyen
+    source: greenhouse
+    slug: adyen
+    tier: 2
+
+  - name: Deel
+    source: ashby
+    slug: deel
     tier: 2
