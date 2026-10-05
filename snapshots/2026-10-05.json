@@ -210,18 +210,6 @@
       "company": "Monzo",
       "department": null,
       "description": null,
-      "external_id": "6945371",
-      "location": "Barcelona",
-      "posted_at": "2026-09-25T05:17:09-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Engineering Manager",
-      "url": "https://job-boards.greenhouse.io/monzo/jobs/6945371"
-    },
-    {
-      "company": "Monzo",
-      "department": null,
-      "description": null,
       "external_id": "5018066",
       "location": "Cardiff, London or Remote (UK)",
       "posted_at": "2026-09-25T05:17:09-04:00",
@@ -229,6 +217,18 @@
       "tier": 1,
       "title": "Engineering Manager",
       "url": "https://job-boards.greenhouse.io/monzo/jobs/5018066"
+    },
+    {
+      "company": "Monzo",
+      "department": null,
+      "description": null,
+      "external_id": "6945371",
+      "location": "Barcelona",
+      "posted_at": "2026-09-25T05:17:09-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Engineering Manager",
+      "url": "https://job-boards.greenhouse.io/monzo/jobs/6945371"
     },
     {
       "company": "Monzo",
@@ -378,18 +378,6 @@
       "company": "Monzo",
       "department": null,
       "description": null,
-      "external_id": "8096409",
-      "location": "Madrid",
-      "posted_at": "2026-09-25T05:17:09-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Risk Assurance Manager",
-      "url": "https://job-boards.greenhouse.io/monzo/jobs/8096409"
-    },
-    {
-      "company": "Monzo",
-      "department": null,
-      "description": null,
       "external_id": "7686358",
       "location": "Dublin",
       "posted_at": "2026-09-25T05:17:09-04:00",
@@ -409,6 +397,18 @@
       "tier": 1,
       "title": "Risk Assurance Manager",
       "url": "https://job-boards.greenhouse.io/monzo/jobs/8096406"
+    },
+    {
+      "company": "Monzo",
+      "department": null,
+      "description": null,
+      "external_id": "8096409",
+      "location": "Madrid",
+      "posted_at": "2026-09-25T05:17:09-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Risk Assurance Manager",
+      "url": "https://job-boards.greenhouse.io/monzo/jobs/8096409"
     },
     {
       "company": "Monzo",
@@ -462,18 +462,6 @@
       "company": "Monzo",
       "department": null,
       "description": null,
-      "external_id": "6180814",
-      "location": "Cardiff, London or Remote (UK)",
-      "posted_at": "2026-09-29T14:19:12-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Senior Data Scientist",
-      "url": "https://job-boards.greenhouse.io/monzo/jobs/6180814"
-    },
-    {
-      "company": "Monzo",
-      "department": null,
-      "description": null,
       "external_id": "8064099",
       "location": "Barcelona",
       "posted_at": "2026-09-25T05:17:09-04:00",
@@ -481,6 +469,18 @@
       "tier": 1,
       "title": "Senior Data Scientist",
       "url": "https://job-boards.greenhouse.io/monzo/jobs/8064099"
+    },
+    {
+      "company": "Monzo",
+      "department": null,
+      "description": null,
+      "external_id": "6180814",
+      "location": "Cardiff, London or Remote (UK)",
+      "posted_at": "2026-09-29T14:19:12-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Senior Data Scientist",
+      "url": "https://job-boards.greenhouse.io/monzo/jobs/6180814"
     },
     {
       "company": "Monzo",
@@ -3138,18 +3138,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5076109008",
-      "location": "Tokyo, Japan",
-      "posted_at": "2026-09-02T02:28:25-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Applied AI Architect",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5076109008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5390746008",
       "location": "Bangalore, India",
       "posted_at": "2026-08-28T14:41:37-04:00",
@@ -3162,18 +3150,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5390735008",
-      "location": "Seoul, South Korea",
-      "posted_at": "2026-09-02T02:31:35-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Applied AI Architect",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390735008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5424310008",
       "location": "Mumbai, India",
       "posted_at": "2026-09-21T03:22:45-04:00",
@@ -3181,6 +3157,30 @@
       "tier": 1,
       "title": "Applied AI Architect",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5424310008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5076109008",
+      "location": "Tokyo, Japan",
+      "posted_at": "2026-09-02T02:28:25-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Applied AI Architect",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5076109008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5390735008",
+      "location": "Seoul, South Korea",
+      "posted_at": "2026-09-02T02:31:35-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Applied AI Architect",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390735008"
     },
     {
       "company": "Anthropic",
@@ -3258,18 +3258,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "4461444008",
-      "location": "New York City, NY; San Francisco, CA | New York City, NY | Seattle, WA",
-      "posted_at": "2026-08-21T12:49:35-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Applied AI Architect, Industries",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4461444008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5390765008",
       "location": "London, UK",
       "posted_at": "2026-08-28T14:44:01-04:00",
@@ -3282,13 +3270,13 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5390778008",
-      "location": "Munich, Germany",
-      "posted_at": "2026-08-31T05:49:46-04:00",
+      "external_id": "4461444008",
+      "location": "New York City, NY; San Francisco, CA | New York City, NY | Seattle, WA",
+      "posted_at": "2026-08-21T12:49:35-04:00",
       "source": "greenhouse",
       "tier": 1,
       "title": "Applied AI Architect, Industries",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390778008"
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/4461444008"
     },
     {
       "company": "Anthropic",
@@ -3301,6 +3289,18 @@
       "tier": 1,
       "title": "Applied AI Architect, Industries",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390770008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5390778008",
+      "location": "Munich, Germany",
+      "posted_at": "2026-08-31T05:49:46-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Applied AI Architect, Industries",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390778008"
     },
     {
       "company": "Anthropic",
@@ -3330,13 +3330,13 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5390902008",
-      "location": "Sydney, Australia",
-      "posted_at": "2026-09-15T07:50:50-04:00",
+      "external_id": "5426933008",
+      "location": "Munich, Germany",
+      "posted_at": "2026-09-21T04:42:09-04:00",
       "source": "greenhouse",
       "tier": 1,
       "title": "Applied AI Architect, Partnerships",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390902008"
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5426933008"
     },
     {
       "company": "Anthropic",
@@ -3354,13 +3354,13 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5426933008",
-      "location": "Munich, Germany",
-      "posted_at": "2026-09-21T04:42:09-04:00",
+      "external_id": "5390902008",
+      "location": "Sydney, Australia",
+      "posted_at": "2026-09-15T07:50:50-04:00",
       "source": "greenhouse",
       "tier": 1,
       "title": "Applied AI Architect, Partnerships",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5426933008"
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390902008"
     },
     {
       "company": "Anthropic",
@@ -3474,18 +3474,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5413642008",
-      "location": "London, UK",
-      "posted_at": "2026-09-15T12:22:40-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Applied AI Engineer, Beneficial Deployments (Life Sciences)",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5413642008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5437172008",
       "location": "San Francisco, CA | New York City, NY",
       "posted_at": "2026-09-28T22:57:03-04:00",
@@ -3493,6 +3481,18 @@
       "tier": 1,
       "title": "Applied AI Engineer, Beneficial Deployments (Life Sciences)",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5437172008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5413642008",
+      "location": "London, UK",
+      "posted_at": "2026-09-15T12:22:40-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Applied AI Engineer, Beneficial Deployments (Life Sciences)",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5413642008"
     },
     {
       "company": "Anthropic",
@@ -3522,18 +3522,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5390754008",
-      "location": "Paris, France",
-      "posted_at": "2026-09-14T17:13:27-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Applied AI Engineer, Enterprise",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390754008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5390795008",
       "location": "Munich, Germany",
       "posted_at": "2026-09-14T17:09:40-04:00",
@@ -3541,6 +3529,18 @@
       "tier": 1,
       "title": "Applied AI Engineer, Enterprise",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390795008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5390754008",
+      "location": "Paris, France",
+      "posted_at": "2026-09-14T17:13:27-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Applied AI Engineer, Enterprise",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5390754008"
     },
     {
       "company": "Anthropic",
@@ -5286,18 +5286,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5437933008",
-      "location": "Dublin, IE",
-      "posted_at": "2026-09-29T12:23:31-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Finance & Strategy, Deal Strategy",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5437933008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5433843008",
       "location": "London, UK",
       "posted_at": "2026-09-25T09:01:07-04:00",
@@ -5305,6 +5293,18 @@
       "tier": 1,
       "title": "Finance & Strategy, Deal Strategy",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5433843008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5437933008",
+      "location": "Dublin, IE",
+      "posted_at": "2026-09-29T12:23:31-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Finance & Strategy, Deal Strategy",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5437933008"
     },
     {
       "company": "Anthropic",
@@ -5430,18 +5430,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5391016008",
-      "location": "Munich, Germany",
-      "posted_at": "2026-08-28T16:45:54-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Forward Deployed Engineer",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5391016008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5423029008",
       "location": "London, UK",
       "posted_at": "2026-09-14T05:27:39-04:00",
@@ -5449,6 +5437,18 @@
       "tier": 1,
       "title": "Forward Deployed Engineer",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5423029008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5391016008",
+      "location": "Munich, Germany",
+      "posted_at": "2026-08-28T16:45:54-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Forward Deployed Engineer",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5391016008"
     },
     {
       "company": "Anthropic",
@@ -5526,18 +5526,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5440799008",
-      "location": "Dublin, IE",
-      "posted_at": "2026-10-01T06:48:58-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Growth Account Executive, Startups",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5440799008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5079916008",
       "location": "New York City, NY; San Francisco, CA",
       "posted_at": "2026-08-24T15:31:48-04:00",
@@ -5545,6 +5533,18 @@
       "tier": 1,
       "title": "Growth Account Executive, Startups",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5079916008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5440799008",
+      "location": "Dublin, IE",
+      "posted_at": "2026-10-01T06:48:58-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Growth Account Executive, Startups",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5440799008"
     },
     {
       "company": "Anthropic",
@@ -7194,18 +7194,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5138042008",
-      "location": "Tokyo, Japan",
-      "posted_at": "2026-08-28T16:49:11-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Product Support Specialist",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5138042008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "4979585008",
       "location": "New York City, NY; San Francisco, CA; Seattle, WA",
       "posted_at": "2026-08-21T12:49:44-04:00",
@@ -7213,6 +7201,18 @@
       "tier": 1,
       "title": "Product Support Specialist",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/4979585008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5138042008",
+      "location": "Tokyo, Japan",
+      "posted_at": "2026-08-28T16:49:11-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Product Support Specialist",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5138042008"
     },
     {
       "company": "Anthropic",
@@ -7578,18 +7578,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5198074008",
-      "location": "London, UK",
-      "posted_at": "2026-08-28T14:43:58-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Research Engineer, Machine Learning (RL Velocity)",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5198074008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5198108008",
       "location": "Remote-Friendly (Travel-Required) | San Francisco, CA | New York City, NY",
       "posted_at": "2026-08-21T12:50:09-04:00",
@@ -7597,6 +7585,18 @@
       "tier": 1,
       "title": "Research Engineer, Machine Learning (RL Velocity)",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5198108008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5198074008",
+      "location": "London, UK",
+      "posted_at": "2026-08-28T14:43:58-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Research Engineer, Machine Learning (RL Velocity)",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5198074008"
     },
     {
       "company": "Anthropic",
@@ -7662,18 +7662,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5112018008",
-      "location": "Z\u00fcrich, CH",
-      "posted_at": "2026-08-28T16:49:39-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Research Engineer, Production Model Post-Training",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5112018008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "4613592008",
       "location": "San Francisco, CA | New York City, NY | Seattle, WA",
       "posted_at": "2026-08-21T12:49:37-04:00",
@@ -7681,6 +7669,18 @@
       "tier": 1,
       "title": "Research Engineer, Production Model Post-Training",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/4613592008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5112018008",
+      "location": "Z\u00fcrich, CH",
+      "posted_at": "2026-08-28T16:49:39-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Research Engineer, Production Model Post-Training",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5112018008"
     },
     {
       "company": "Anthropic",
@@ -7890,18 +7890,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5199633008",
-      "location": "Seoul, South Korea",
-      "posted_at": "2026-08-31T01:03:50-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Revenue Strategy & Operations",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5199633008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5439844008",
       "location": "Singapore",
       "posted_at": "2026-10-01T04:31:34-04:00",
@@ -7909,6 +7897,18 @@
       "tier": 1,
       "title": "Revenue Strategy & Operations",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5439844008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5199633008",
+      "location": "Seoul, South Korea",
+      "posted_at": "2026-08-31T01:03:50-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Revenue Strategy & Operations",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5199633008"
     },
     {
       "company": "Anthropic",
@@ -8202,18 +8202,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5436826008",
-      "location": "San Francisco, CA | New York City, NY | Seattle, WA",
-      "posted_at": "2026-10-02T16:37:42-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Security Audit & Controls, Security GRC",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5436826008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5439224008",
       "location": "San Francisco, CA | New York City, NY",
       "posted_at": "2026-10-02T19:25:32-04:00",
@@ -8221,6 +8209,18 @@
       "tier": 1,
       "title": "Security Audit & Controls, Security GRC",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5439224008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5436826008",
+      "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+      "posted_at": "2026-10-02T16:37:42-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Security Audit & Controls, Security GRC",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5436826008"
     },
     {
       "company": "Anthropic",
@@ -8718,18 +8718,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5139038008",
-      "location": "San Francisco, CA | New York City, NY | Seattle, WA",
-      "posted_at": "2026-08-21T12:50:00-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Staff Engineer, Datacenter Server Lifecycle",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5139038008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5309917008",
       "location": "Sydney, Australia",
       "posted_at": "2026-08-28T16:47:53-04:00",
@@ -8737,6 +8725,18 @@
       "tier": 1,
       "title": "Staff Engineer, Datacenter Server Lifecycle",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5309917008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5139038008",
+      "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+      "posted_at": "2026-08-21T12:50:00-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Staff Engineer, Datacenter Server Lifecycle",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5139038008"
     },
     {
       "company": "Anthropic",
@@ -9918,18 +9918,6 @@
       "company": "Anthropic",
       "department": null,
       "description": null,
-      "external_id": "5126008008",
-      "location": "Seattle, WA",
-      "posted_at": "2026-09-09T13:24:40-04:00",
-      "source": "greenhouse",
-      "tier": 1,
-      "title": "Strategic Account Executive, Tech",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5126008008"
-    },
-    {
-      "company": "Anthropic",
-      "department": null,
-      "description": null,
       "external_id": "5108111008",
       "location": "San Francisco, CA",
       "posted_at": "2026-09-09T22:01:04-04:00",
@@ -9937,6 +9925,18 @@
       "tier": 1,
       "title": "Strategic Account Executive, Tech",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5108111008"
+    },
+    {
+      "company": "Anthropic",
+      "department": null,
+      "description": null,
+      "external_id": "5126008008",
+      "location": "Seattle, WA",
+      "posted_at": "2026-09-09T13:24:40-04:00",
+      "source": "greenhouse",
+      "tier": 1,
+      "title": "Strategic Account Executive, Tech",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5126008008"
     },
     {
       "company": "Anthropic",
@@ -26154,18 +26154,6 @@
       "company": "Fireblocks",
       "department": null,
       "description": null,
-      "external_id": "4690394006",
-      "location": "Hong Kong",
-      "posted_at": "2026-10-01T11:21:36-04:00",
-      "source": "greenhouse",
-      "tier": 2,
-      "title": "Sales Director, Banking",
-      "url": "https://www.fireblocks.com/careers/position?gh_jid=4690394006"
-    },
-    {
-      "company": "Fireblocks",
-      "department": null,
-      "description": null,
       "external_id": "4698013006",
       "location": "New York",
       "posted_at": "2026-10-01T11:21:36-04:00",
@@ -26173,6 +26161,18 @@
       "tier": 2,
       "title": "Sales Director, Banking",
       "url": "https://www.fireblocks.com/careers/position?gh_jid=4698013006"
+    },
+    {
+      "company": "Fireblocks",
+      "department": null,
+      "description": null,
+      "external_id": "4690394006",
+      "location": "Hong Kong",
+      "posted_at": "2026-10-01T11:21:36-04:00",
+      "source": "greenhouse",
+      "tier": 2,
+      "title": "Sales Director, Banking",
+      "url": "https://www.fireblocks.com/careers/position?gh_jid=4690394006"
     },
     {
       "company": "Fireblocks",
@@ -26250,13 +26250,13 @@
       "company": "Fireblocks",
       "department": null,
       "description": null,
-      "external_id": "4606870006",
-      "location": "Hong Kong",
+      "external_id": "4698009006",
+      "location": "New York",
       "posted_at": "2026-10-01T11:21:36-04:00",
       "source": "greenhouse",
       "tier": 2,
       "title": "Sales Engineer",
-      "url": "https://www.fireblocks.com/careers/position?gh_jid=4606870006"
+      "url": "https://www.fireblocks.com/careers/position?gh_jid=4698009006"
     },
     {
       "company": "Fireblocks",
@@ -26274,13 +26274,13 @@
       "company": "Fireblocks",
       "department": null,
       "description": null,
-      "external_id": "4698009006",
-      "location": "New York",
+      "external_id": "4606870006",
+      "location": "Hong Kong",
       "posted_at": "2026-10-01T11:21:36-04:00",
       "source": "greenhouse",
       "tier": 2,
       "title": "Sales Engineer",
-      "url": "https://www.fireblocks.com/careers/position?gh_jid=4698009006"
+      "url": "https://www.fireblocks.com/careers/position?gh_jid=4606870006"
     },
     {
       "company": "Fireblocks",
