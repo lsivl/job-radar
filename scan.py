@@ -1,22 +1,33 @@
 """Daily scanner entry point.
 
-Phase 1 scope:
-    * Load target companies from targets.yaml
-    * Fetch open jobs from each company's ATS
-    * Print a summary table so we can see the pipeline is alive
+Pipeline:
+    1. Load target companies from targets.yaml
+    2. Fetch open jobs from each company's ATS
+    3. Save today's snapshot (so tomorrow has something to diff against)
+    4. Diff against the most recent prior snapshot -> newly posted jobs
+    5. Score the new jobs with Claude against the candidate rubric
+    6. Push a Telegram digest of anything that clears the bar
 
-Later phases will add diffing, LLM scoring, and Telegram delivery.
+GitHub Actions cron (Phase 4) will call this on a daily schedule.
 """
 
 from __future__ import annotations
 
 import sys
 from collections import defaultdict
+from datetime import date
+
+from dotenv import load_dotenv
 
 from radar.config import load_targets
+from radar.delivery import send_digest
+from radar.diff import new_jobs_since_last_snapshot
 from radar.fetchers import get_fetcher
 from radar.models import Job
+from radar.scorer import score_jobs
 from radar.storage import save_snapshot
+
+load_dotenv()
 
 
 def scan_all() -> list[Job]:
@@ -72,9 +83,20 @@ def main() -> int:
         print("\n❌  No jobs collected — check network / slugs in targets.yaml")
         return 1
 
-    snapshot_path = save_snapshot(jobs)
+    today = date.today()
+    snapshot_path = save_snapshot(jobs, today)
     print(f"\n💾  Snapshot saved: {snapshot_path}")
-    print("\n✅  Phase 1 complete: fetchers + snapshotting working.\n")
+
+    new_jobs = new_jobs_since_last_snapshot(jobs, today)
+    print(f"\n🆕  {len(new_jobs)} new job(s) since the previous snapshot")
+
+    scored = score_jobs(new_jobs)
+    hits = [s for s in scored if s.dream_match or s.score >= 7]
+    if scored:
+        print(f"🧠  Scored {len(scored)} new job(s) — {len(hits)} cleared the ≥7/10 or dream-match bar")
+
+    send_digest(scored)
+    print("\n✅  Pipeline complete: fetch + diff + score + digest.\n")
     return 0
 
 

@@ -13,9 +13,9 @@ job-radar runs serverlessly on GitHub Actions, hits public ATS APIs (Greenhouse,
 ## Status
 
 Phase 1 ✅  — Fetchers + snapshot persistence working across 4 ATS platforms
-Phase 2 🚧  — Diff engine + Claude scoring
-Phase 3 🗓️  — Telegram delivery
-Phase 4 🗓️  — GitHub Actions daily cron
+Phase 2 ✅  — Diff engine (new-jobs-since-yesterday) + Claude (Haiku) scoring against the candidate rubric
+Phase 3 ✅  — Telegram digest delivery (dream matches + target-list hits, splits long messages)
+Phase 4 🗓️  — GitHub Actions daily cron (needs `ANTHROPIC_API_KEY` / `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` as repo secrets)
 
 ## Architecture
 
@@ -56,10 +56,20 @@ python3.13 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-cp .env.example .env   # fill in ANTHROPIC_API_KEY + Telegram creds later
+cp .env.example .env   # fill in ANTHROPIC_API_KEY + Telegram creds
 
-python scan.py         # one-off run
+python scan.py         # one-off run: fetch -> snapshot -> diff -> score -> digest
 ```
+
+Without `ANTHROPIC_API_KEY` set, scoring will raise. Without the Telegram
+vars set, delivery just logs a warning and skips (everything else still
+runs and the snapshot still gets saved).
+
+### Getting a Telegram bot token + chat id
+
+1. Message [@BotFather](https://t.me/BotFather) on Telegram -> `/newbot` -> follow the prompts -> copy the token.
+2. Send your new bot any message (so it has a conversation to reply into).
+3. Visit `https://api.telegram.org/bot<TOKEN>/getUpdates` and read `message.chat.id` from the JSON -> that's `TELEGRAM_CHAT_ID`.
 
 ## Configuring targets
 
