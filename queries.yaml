@@ -8,9 +8,21 @@
 # Each query's `filters` dict is passed through as-is to the API's POST body —
 # see https://www.remoterocketship.com/api-docs/ for the full list of
 # supported filter keys and allowed values.
+#
+# Location policy (see radar/rubric.py for the full version Claude scores
+# against):
+#   1. Remote is fine, but must be legally eligible from Poland. The API's
+#      location filters below are a broad candidate net ("remote" ads often
+#      say "EU remote" or "Worldwide" without being precise) — the real
+#      enforcement of "actually hireable from Poland" happens at the Claude
+#      scoring stage, since that requires reading the actual job text.
+#   2. Hybrid is only acceptable if the office is in Wrocław itself — see
+#      the separate "Hybrid/onsite — Wrocław" query below, which is scoped
+#      by city instead of by remote-eligibility.
+#   3. Remote + frequent business travel is explicitly fine.
 
 queries:
-  - name: "EM / Head of Eng — fintech & AI, EU remote"
+  - name: "EM / Head of Eng — fintech & AI, remote"
     tier: 1
     max_pages: 3 # 3 * itemsPerPage(50) = 150 jobs max for this query
     filters:
@@ -34,7 +46,7 @@ queries:
       itemsPerPage: 50
       sortBy: "DateAdded"
 
-  - name: "Founding Engineer — AI-native product, EU remote"
+  - name: "Founding Engineer — AI-native product, remote"
     tier: 1
     max_pages: 3
     filters:
@@ -53,6 +65,24 @@ queries:
       showHybridJobs: false
       showOnsiteJobs: false
       industriesFilters: ["Artificial Intelligence", "Fintech"]
+      hideGhostJobsFilter: "true"
+      itemsPerPage: 50
+      sortBy: "DateAdded"
+
+  - name: "Hybrid/onsite — Wrocław"
+    tier: 1
+    max_pages: 2
+    filters:
+      jobTitleFilters:
+        - "Engineering Manager"
+        - "Head of Engineering"
+        - "Director of Engineering"
+        - "Founding Engineer"
+        - "Staff Engineer"
+      locationCityFilters: ["Wrocław", "Wroclaw"] # cover both spellings
+      showRemoteJobs: false
+      showHybridJobs: true
+      showOnsiteJobs: true
       hideGhostJobsFilter: "true"
       itemsPerPage: 50
       sortBy: "DateAdded"
