@@ -15,7 +15,7 @@ job-radar runs serverlessly on GitHub Actions, hits public ATS APIs (Greenhouse,
 Phase 1 ✅  — Fetchers + snapshot persistence working across 4 ATS platforms
 Phase 2 ✅  — Diff engine (new-jobs-since-yesterday) + Claude (Haiku) scoring against the candidate rubric
 Phase 3 ✅  — Telegram digest delivery (dream matches + target-list hits, splits long messages)
-Phase 4 🗓️  — GitHub Actions daily cron (needs `ANTHROPIC_API_KEY` / `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` as repo secrets)
+Phase 4 ✅  — GitHub Actions daily cron (`.github/workflows/daily-digest.yml`, 07:00 Europe/Warsaw) — add the three secrets below to activate it
 
 ## Architecture
 
@@ -77,9 +77,27 @@ Edit `targets.yaml`. Each entry needs the ATS and the board slug — see the com
 
 Current seed list covers Monzo, Mercury, Plaid, Ramp, Anthropic, OpenAI, Harvey, Cursor, Fireblocks.
 
-## Deployment (planned)
+## Deployment
 
-Daily cron via GitHub Actions. Secrets (Anthropic API key, Telegram bot token, chat id) stored in repo settings — never committed. Snapshots are committed back into `snapshots/` to maintain historical state across runs without external storage.
+Daily cron via GitHub Actions (`.github/workflows/daily-digest.yml`, 07:00
+Europe/Warsaw, plus a manual `workflow_dispatch` trigger for testing).
+Snapshots are committed back into `snapshots/` each run so history persists
+without any external storage.
+
+To activate it, add these as **repo secrets** (Settings -> Secrets and
+variables -> Actions -> New repository secret) — same values as your local
+`.env`, never committed:
+
+- `ANTHROPIC_API_KEY`
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+
+Then trigger it once manually (Actions tab -> Daily Job Digest -> Run
+workflow) to confirm it works before trusting the cron.
+
+The `ANTHROPIC_API_KEY` from console.anthropic.com's quick-create flow may
+be short-lived (~30 days) — if the workflow starts failing, check the
+console for an expired key first.
 
 ## License
 
