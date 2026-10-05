@@ -1,8 +1,10 @@
 """Daily scanner entry point.
 
 Pipeline:
-    1. Load target companies from targets.yaml
-    2. Fetch open jobs from each company's ATS
+    1. Load target companies from targets.yaml (per-company ATS fetchers)
+    1b. Load saved searches from queries.yaml (RemoteRocketship aggregator,
+        skipped entirely if REMOTEROCKETSHIP_API_KEY isn't set)
+    2. Fetch open jobs from every source
     3. Save today's snapshot (so tomorrow has something to diff against)
     4. Diff against the most recent prior snapshot -> newly posted jobs
     5. Score the new jobs with Claude against the candidate rubric
@@ -13,16 +15,18 @@ GitHub Actions cron (Phase 4) will call this on a daily schedule.
 
 from __future__ import annotations
 
+import os
 import sys
 from collections import defaultdict
 from datetime import date
 
 from dotenv import load_dotenv
 
-from radar.config import load_targets
+from radar.config import load_queries, load_targets
 from radar.delivery import send_digest
 from radar.diff import new_jobs_since_last_snapshot
 from radar.fetchers import get_fetcher
+from radar.fetchers import remoterocketship
 from radar.models import Job
 from radar.scorer import score_jobs
 from radar.storage import save_snapshot
@@ -30,7 +34,7 @@ from radar.storage import save_snapshot
 load_dotenv()
 
 
-def scan_all() -> list[Job]:
+def scan_targets() -> list[Job]:
     """Fetch open jobs for every company in targets.yaml."""
     targets = load_targets()
     all_jobs: list[Job] = []
@@ -55,6 +59,29 @@ def scan_all() -> list[Job]:
             print(f"     - {err}")
 
     return all_jobs
+
+
+def scan_queries() -> list[Job]:
+    """Run saved RemoteRocketship searches, if an API key is configured."""
+    api_key = os.environ.get("REMOTEROCKETSHIP_API_KEY")
+    queries = load_queries()
+
+    if not api_key:
+        if queries:
+            print("\nℹ️  queries.yaml has entries but REMOTEROCKETSHIP_API_KEY "
+                  "isn't set — skipping aggregator search.")
+        return []
+    if not queries:
+        return []
+
+    print(f"\n🔭 Running {len(queries)} saved RemoteRocketship search(es)...\n")
+    jobs = remoterocketship.fetch_all(api_key, queries)
+    print(f"  ✅  {len(jobs)} job(s) across {len(queries)} saved search(es)")
+    return jobs
+
+
+def scan_all() -> list[Job]:
+    return scan_targets() + scan_queries()
 
 
 def print_summary(jobs: list[Job]) -> None:

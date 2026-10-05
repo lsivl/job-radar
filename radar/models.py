@@ -8,11 +8,12 @@ from typing import Any
 
 @dataclass
 class Job:
-    """Normalized representation of a single open role across ATS platforms."""
+    """Normalized representation of a single open role across ATS platforms
+    and aggregator sources (e.g. RemoteRocketship)."""
 
-    source: str  # "greenhouse" | "lever" | "ashby" | "workable"
+    source: str  # "greenhouse" | "lever" | "ashby" | "workable" | "remoterocketship"
     company: str  # Display name, e.g. "Monzo"
-    external_id: str  # ATS-provided unique id
+    external_id: str  # ATS/aggregator-provided unique id
     title: str
     location: str
     url: str
@@ -20,6 +21,9 @@ class Job:
     department: str | None = None
     posted_at: str | None = None  # ISO-8601 if available
     description: str | None = None  # Full JD text, filled lazily for scoring
+    salary_range: str | None = None  # Human-readable, e.g. "€95,000 - €120,000 per year"
+    tech_stack: list[str] = field(default_factory=list)
+    sponsors_h1b: bool | None = None
 
     @property
     def dedup_key(self) -> str:

@@ -1,0 +1,58 @@
+# Saved searches against the RemoteRocketship Jobs API (aggregator across
+# 300k+ company career pages — NOT tied to a single company like targets.yaml).
+#
+# Requires REMOTEROCKETSHIP_API_KEY in .env (Advanced plan subscription).
+# If that key is unset, these queries are skipped entirely — targets.yaml
+# keeps working on its own.
+#
+# Each query's `filters` dict is passed through as-is to the API's POST body —
+# see https://www.remoterocketship.com/api-docs/ for the full list of
+# supported filter keys and allowed values.
+
+queries:
+  - name: "EM / Head of Eng — fintech & AI, EU remote"
+    tier: 1
+    max_pages: 3 # 3 * itemsPerPage(50) = 150 jobs max for this query
+    filters:
+      jobTitleFilters:
+        - "Engineering Manager"
+        - "Head of Engineering"
+        - "Director of Engineering"
+      seniorityFilters: ["lead"]
+      locationFilters:
+        - "Worldwide"
+        - "European Union"
+        - "Poland"
+        - "United Kingdom"
+        - "Germany"
+        - "Netherlands"
+      showRemoteJobs: true
+      showHybridJobs: false
+      showOnsiteJobs: false
+      excludeIndustriesFilters: ["Crypto"] # pure-DeFi/protocol roles — known gap, filtered server-side
+      hideGhostJobsFilter: "true"
+      itemsPerPage: 50
+      sortBy: "DateAdded"
+
+  - name: "Founding Engineer — AI-native product, EU remote"
+    tier: 1
+    max_pages: 3
+    filters:
+      jobTitleFilters:
+        - "Founding Engineer"
+        - "Staff Engineer"
+      seniorityFilters: ["senior", "lead"]
+      locationFilters:
+        - "Worldwide"
+        - "European Union"
+        - "Poland"
+        - "United Kingdom"
+        - "Germany"
+        - "Netherlands"
+      showRemoteJobs: true
+      showHybridJobs: false
+      showOnsiteJobs: false
+      industriesFilters: ["Artificial Intelligence", "Fintech"]
+      hideGhostJobsFilter: "true"
+      itemsPerPage: 50
+      sortBy: "DateAdded"

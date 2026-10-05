@@ -1,13 +1,17 @@
 """Claude-based scoring of newly posted jobs against the candidate rubric.
 
-Only called on the (small) set of newly diffed jobs each day — that keeps
-API spend trivial (see README cost estimate).
+Only called on the (small, usually) set of newly diffed jobs each day —
+that keeps API spend trivial (see README cost estimate). Scored
+concurrently via a thread pool since each call is latency-bound, not
+CPU-bound: on a one-time backlog flush (e.g. adding new target companies)
+this is the difference between ~40 minutes and ~2 minutes.
 """
 
 from __future__ import annotations
 
 import json
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from anthropic import Anthropic
 
@@ -16,18 +20,24 @@ from .rubric import build_prompt
 
 # Haiku is plenty for this classification task and keeps monthly cost ~$1.
 MODEL = "claude-haiku-4-5-20251001"
+MAX_WORKERS = 10
 
 
 def _job_summary(job: Job) -> str:
-    return (
+    lines = [
         f"- Company: {job.company} (tier {job.tier} on the target list, "
-        f"1 = dream, 3 = watch)\n"
-        f"- Role title: {job.title}\n"
-        f"- Department: {job.department or 'n/a'}\n"
-        f"- Location: {job.location}\n"
-        f"- Source: {job.source}\n"
-        f"- URL: {job.url}"
-    )
+        f"1 = dream, 3 = watch)",
+        f"- Role title: {job.title}",
+        f"- Department: {job.department or 'n/a'}",
+        f"- Location: {job.location}",
+        f"- Source: {job.source}",
+        f"- URL: {job.url}",
+    ]
+    if job.salary_range:
+        lines.append(f"- Salary: {job.salary_range}")
+    if job.tech_stack:
+        lines.append(f"- Tech stack: {', '.join(job.tech_stack)}")
+    return "\n".join(lines)
 
 
 def _parse_json(text: str) -> dict:
@@ -63,7 +73,7 @@ def score_job(client: Anthropic, job: Job) -> ScoredJob:
 
 
 def score_jobs(jobs: list[Job]) -> list[ScoredJob]:
-    """Score every job, skipping (and logging) any that fail individually."""
+    """Score every job concurrently, skipping (and logging) any that fail."""
     if not jobs:
         return []
 
@@ -75,9 +85,18 @@ def score_jobs(jobs: list[Job]) -> list[ScoredJob]:
 
     client = Anthropic(api_key=api_key)
     scored: list[ScoredJob] = []
-    for job in jobs:
-        try:
-            scored.append(score_job(client, job))
-        except Exception as exc:  # noqa: BLE001 — one bad job shouldn't kill the run
-            print(f"  ⚠️  Scoring failed for {job.company} — {job.title}: {exc}")
+    done = 0
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        futures = {pool.submit(score_job, client, job): job for job in jobs}
+        for future in as_completed(futures):
+            job = futures[future]
+            done += 1
+            try:
+                scored.append(future.result())
+            except Exception as exc:  # noqa: BLE001 — one bad job shouldn't kill the run
+                print(f"  ⚠️  Scoring failed for {job.company} — {job.title}: {exc}")
+            if done % 50 == 0 or done == len(jobs):
+                print(f"     ...scored {done}/{len(jobs)}")
+
     return scored
