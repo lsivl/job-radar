@@ -8,7 +8,8 @@ import httpx
 
 from .models import ScoredJob
 
-TELEGRAM_API = "https://api.telegram.org/bot{token}/sendMessage"
+TELEGRAM_SEND_MESSAGE = "https://api.telegram.org/bot{token}/sendMessage"
+TELEGRAM_SEND_DOCUMENT = "https://api.telegram.org/bot{token}/sendDocument"
 DEFAULT_THRESHOLD = 7
 TELEGRAM_CHUNK_SIZE = 4000  # Telegram's hard cap is 4096 chars per message.
 
@@ -36,7 +37,7 @@ def _chunk(text: str, size: int = TELEGRAM_CHUNK_SIZE) -> list[str]:
 
 
 def _send(token: str, chat_id: str, text: str) -> None:
-    url = TELEGRAM_API.format(token=token)
+    url = TELEGRAM_SEND_MESSAGE.format(token=token)
     for chunk in _chunk(text):
         response = httpx.post(
             url,
@@ -50,6 +51,28 @@ def _send(token: str, chat_id: str, text: str) -> None:
         )
         if response.status_code != 200:
             print(f"  ⚠️  Telegram delivery failed ({response.status_code}): {response.text}")
+
+
+def send_document(filename: str, content: str, caption: str = "") -> None:
+    """Push a text file (e.g. a draft cover letter) as a Telegram document.
+
+    Safe no-op if Telegram isn't configured — mirrors send_digest's behavior.
+    """
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        print("  ⚠️  Telegram not configured — skipping document delivery.")
+        return
+
+    url = TELEGRAM_SEND_DOCUMENT.format(token=token)
+    response = httpx.post(
+        url,
+        data={"chat_id": chat_id, "caption": caption[:1024]},
+        files={"document": (filename, content.encode("utf-8"), "text/markdown")},
+        timeout=15.0,
+    )
+    if response.status_code != 200:
+        print(f"  ⚠️  Telegram document delivery failed ({response.status_code}): {response.text}")
 
 
 def send_digest(scored_jobs: list[ScoredJob], threshold: int = DEFAULT_THRESHOLD) -> None:

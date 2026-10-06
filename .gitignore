@@ -1,6 +1,10 @@
 # job-radar specific
 .env
 .venv/
+# Local-only, never committed: base resume has PII (name/email/phone),
+# generated application drafts are personal career material.
+resume/
+applications/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

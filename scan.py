@@ -9,6 +9,12 @@ Pipeline:
     4. Diff against the most recent prior snapshot -> newly posted jobs
     5. Score the new jobs with Claude against the candidate rubric
     6. Push a Telegram digest of anything that clears the bar
+    7. For the standout hits only (dream match or score >= APPLY_KIT_THRESHOLD),
+       draft a tailored CV-highlights + cover letter and push it as a
+       Telegram document — review-only, nothing is ever auto-submitted.
+       Skipped entirely if resume/base_cv.md isn't present locally (it's
+       gitignored and never uploaded to CI, so this step is local-only
+       unless you deliberately wire it into the cloud run later).
 
 GitHub Actions cron (Phase 4) will call this on a daily schedule.
 """
@@ -20,16 +26,20 @@ import sys
 from collections import defaultdict
 from datetime import date
 
+from anthropic import Anthropic
 from dotenv import load_dotenv
 
+from radar.apply_kit import draft_application, format_draft_markdown, load_resume
 from radar.config import load_queries, load_targets
-from radar.delivery import send_digest
+from radar.delivery import send_digest, send_document
 from radar.diff import new_jobs_since_last_snapshot
 from radar.fetchers import get_fetcher
 from radar.fetchers import remoterocketship
-from radar.models import Job
+from radar.models import Job, ScoredJob
 from radar.scorer import score_jobs
 from radar.storage import save_snapshot
+
+APPLY_KIT_THRESHOLD = 8
 
 load_dotenv()
 
@@ -102,6 +112,33 @@ def print_summary(jobs: list[Job]) -> None:
         print(f"     [{job.company}] {job.title} — {job.location}")
 
 
+def run_apply_kit(scored: list[ScoredJob]) -> None:
+    """Draft + send review-only application material for the standout hits."""
+    resume_text = load_resume()
+    if resume_text is None:
+        return  # no local resume/base_cv.md — nothing to tailor, nothing sent.
+
+    candidates = [s for s in scored if s.dream_match or s.score >= APPLY_KIT_THRESHOLD]
+    if not candidates:
+        return
+
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        return  # score_jobs() would already have raised earlier if truly unset
+
+    client = Anthropic(api_key=api_key)
+    print(f"\n✍️   Drafting application material for {len(candidates)} standout hit(s)...")
+    for s in candidates:
+        try:
+            draft = draft_application(client, s, resume_text)
+            markdown = format_draft_markdown(s, draft)
+            filename = f"draft-{s.job.company}-{s.job.external_id}.md".replace(" ", "_")
+            send_document(filename, markdown, caption=f"📝 Draft application — {s.job.title} @ {s.job.company}")
+            print(f"   ✅  {s.job.company} — {s.job.title}")
+        except Exception as exc:  # noqa: BLE001 — one bad draft shouldn't kill the run
+            print(f"   ⚠️  Draft failed for {s.job.company} — {s.job.title}: {exc}")
+
+
 def main() -> int:
     jobs = scan_all()
     print_summary(jobs)
@@ -123,6 +160,7 @@ def main() -> int:
         print(f"🧠  Scored {len(scored)} new job(s) — {len(hits)} cleared the ≥7/10 or dream-match bar")
 
     send_digest(scored)
+    run_apply_kit(scored)
     print("\n✅  Pipeline complete: fetch + diff + score + digest.\n")
     return 0
 

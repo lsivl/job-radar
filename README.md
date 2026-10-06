@@ -17,6 +17,7 @@ Phase 2 ✅  — Diff engine (new-jobs-since-yesterday) + Claude (Haiku) scoring
 Phase 3 ✅  — Telegram digest delivery (dream matches + target-list hits, splits long messages)
 Phase 4 ✅  — GitHub Actions daily cron (`.github/workflows/daily-digest.yml`, 07:00 Europe/Warsaw) — add the three secrets below to activate it
 Phase 5 ✅  — RemoteRocketship aggregator source (`queries.yaml`, saved cross-company searches) — optional, needs its own API key
+Phase 6 ✅  — Apply-kit: tailored CV highlights + cover letter draft for standout hits (dream match or score ≥8), delivered as a Telegram document for review — local-only, never auto-submits anything anywhere
 
 ## Architecture
 
@@ -101,6 +102,45 @@ https://www.remoterocketship.com/account/ -> Advanced -> API access) and
 `REMOTEROCKETSHIP_API_KEY` in `.env`. Quota: 3000 jobs / 500 requests per
 UTC day. If the key is unset, these queries are skipped entirely —
 `targets.yaml` keeps working standalone.
+
+## Apply-kit (optional, local-only)
+
+For the standout hits — `dream_match: true`, or score ≥ 8 — job-radar can
+draft a tailored set of resume highlights + a cover letter, grounded
+strictly in your real resume (no fabricated experience), and send it to
+you as a Telegram document to review.
+
+**This deliberately stops at drafting.** Nothing is ever auto-submitted
+to a company or an ATS — see [Why no auto-apply](#why-no-auto-apply)
+below. You read the draft, decide if it's worth sending, and apply
+yourself.
+
+To enable it locally:
+
+```bash
+mkdir -p resume
+cp /path/to/your/real/resume.md resume/base_cv.md
+```
+
+`resume/` and `applications/` are gitignored — your resume contains PII
+(name, email, phone) and is never committed, never uploaded to CI, and
+only read from your local disk. If `resume/base_cv.md` doesn't exist,
+apply-kit generation is silently skipped — everything else (scan, score,
+digest) still runs normally. This means apply-kit currently only runs
+on a local `python scan.py`, not in the GitHub Actions cron — nothing
+stops you from wiring it into CI later (e.g. as a repo secret), but that
+wasn't done by default given the PII involved.
+
+### Why no auto-apply
+
+Senior roles (EM / Head of Eng / Founding Engineer) are a high-signal,
+low-volume game — the kind of auto-apply tooling that blasts generic
+applications across hundreds of postings actively hurts your signal at
+this level: recruiters and ATS systems increasingly detect generic
+mass-applies, and a tailored, human-reviewed application converts far
+better than volume. This project's own earlier job-search-automation
+brainstorm explicitly flagged "auto-apply bots" as a pattern to avoid for
+exactly this reason — apply-kit respects that by stopping at the draft.
 
 ## Deployment
 
