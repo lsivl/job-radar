@@ -37,6 +37,8 @@ def _job_summary(job: Job) -> str:
         lines.append(f"- Salary: {job.salary_range}")
     if job.tech_stack:
         lines.append(f"- Tech stack: {', '.join(job.tech_stack)}")
+    if job.description:
+        lines.append(f"- Description excerpt:\n{job.description}")
     return "\n".join(lines)
 
 

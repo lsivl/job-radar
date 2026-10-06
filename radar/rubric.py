@@ -25,11 +25,16 @@ CANDIDATE PROFILE:
 - Location: Wrocław, Poland. Works as a Polish B2B contractor
   (działalność gospodarcza). Location rules, in order of preference:
     1. Remote, but MUST be legally eligible to work from Poland. A role
-       advertised as "remote" that is actually restricted to a specific
-       country/region excluding Poland (e.g. "Remote - US only", "must
-       reside in the UK", "EU-only" when Poland isn't clearly EU-covered,
-       visa/work-authorization tied to a non-Poland jurisdiction) is a
-       DISQUALIFIER, not a minor concern — flag it clearly and score low.
+       advertised as "remote" that EXPLICITLY STATES a restriction
+       excluding Poland (e.g. "Remote - US only", "must reside in the
+       UK", "candidates must be authorized to work in [non-Poland
+       country]") is a DISQUALIFIER — flag it clearly and score low.
+       IMPORTANT: the mere ABSENCE of an explicit Poland/EU mention is
+       NOT itself a disqualifier — most job postings don't enumerate
+       every eligible country. Only treat this as a hard blocker when
+       the text actively excludes Poland/EU/worldwide-remote; otherwise
+       treat missing location detail as a normal (minor) confidence
+       reduction, not a scoring blocker.
     2. Hybrid is acceptable ONLY if the office is in Wrocław itself.
        Hybrid requiring any other city/country is a disqualifier.
     3. Fully remote with frequent business travel/offsites is explicitly

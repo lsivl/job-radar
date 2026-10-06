@@ -19,10 +19,23 @@ from ..models import Job
 BASE_URL = "https://www.remoterocketship.com/api/openclaw/jobs/"
 
 
+# Keep snapshot bloat bounded — enough for Claude to actually check location
+# eligibility / domain / stage language, not a full copy of every posting.
+DESCRIPTION_EXCERPT_CHARS = 1200
+REQUIREMENTS_EXCERPT_CHARS = 400
+
+
 def _to_job(tier: int, raw: dict) -> Job:
     company = raw.get("company") or {}
     salary = raw.get("salaryRange")
     salary_text = salary.get("salaryHumanReadableText") if isinstance(salary, dict) else None
+
+    description_parts = []
+    if raw.get("roleDescription"):
+        description_parts.append(raw["roleDescription"][:DESCRIPTION_EXCERPT_CHARS])
+    if raw.get("roleRequirements"):
+        description_parts.append("Requirements: " + raw["roleRequirements"][:REQUIREMENTS_EXCERPT_CHARS])
+    description = "\n\n".join(description_parts) or None
 
     return Job(
         source="remoterocketship",
@@ -33,6 +46,7 @@ def _to_job(tier: int, raw: dict) -> Job:
         url=raw.get("url") or "",
         tier=tier,
         posted_at=raw.get("created_at"),
+        description=description,
         salary_range=salary_text,
         tech_stack=list(raw.get("techStack") or []),
         sponsors_h1b=company.get("sponsorsH1B"),
@@ -47,7 +61,9 @@ def run_query(client: httpx.Client, query: QueryConfig) -> list[Job]:
     while page <= query.max_pages:
         body = {
             "filters": {**query.filters, "page": page},
-            "includeJobDescription": False,
+            # Needed so Claude can actually check location-eligibility /
+            # domain / stage language instead of guessing from title alone.
+            "includeJobDescription": True,
         }
         response = client.post(BASE_URL, json=body)
 
